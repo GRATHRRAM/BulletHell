@@ -1,4 +1,5 @@
 #pragma once
+#include <raylib.h>
 
 class Engine {
 public:
@@ -6,4 +7,6 @@ public:
 	~Engine();
 	void Update();
 	void Render();
+private:
+	Camera2D Camera;
 };
