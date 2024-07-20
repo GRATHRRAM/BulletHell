@@ -12,11 +12,12 @@ public: //add texture later
 	float speed = 10;
 	Vector2 Velocity = {0,0};
 	Rectangle Collision = {0,0,100,200};
-	bool OnGround = false;
 	float Gravity = 20;
 
 	void Draw();
 	void UpdateEvent(float Delta);
 	void UpdatePhysics(float Delta);
 	void CheckCollision(Map *map);
+	private:
+	bool OnGround = false;
 };
