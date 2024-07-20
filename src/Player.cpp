@@ -35,13 +35,13 @@ void Player::UpdatePhysics(float Delta) {
     Player::Velocity.x *= 0.99;//fricton
     //if(Player::Velocity.x < 0.0001 || Player::Velocity.x > -0.0001) Player::Velocity.x = 0;
 
+    if(Player::Velocity.x > 100) Player::Velocity.x = 100;
+    if(Player::Velocity.x < -100) Player::Velocity.x = -100;
     Player::Collision.x += Player::Velocity.x;
     Player::Collision.y += Player::Velocity.y;
 }
 
 void Player::CheckCollision(Map *map) {
-    //r1x + r1w >= r2x &&     // r1 right edge past r2 left
-    //r1x <= r2x + r2w && 
     for(uint16_t i = 0; i < map->GetBlockArrSize(); ++i) {
         if ( map->GetBlockColission(i).y <= Player::Collision.y + Player::Collision.height &&
             Player::Collision.x + Player::Collision.width >=  map->GetBlockColission(i).x &&

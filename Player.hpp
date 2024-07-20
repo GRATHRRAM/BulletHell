@@ -9,7 +9,7 @@ public: //add texture later
 	Player(Vector2 SpawnPosition, uint8_t WitchPlayer);
 
 	uint8_t WitchPlayer;
-	float speed = 10;
+	float speed = 25;
 	Vector2 Velocity = {0,0};
 	Rectangle Collision = {0,0,100,200};
 	float Gravity = 20;

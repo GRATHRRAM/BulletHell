@@ -3,7 +3,7 @@
 
 int main() {
 	Engine game(1280,720);
-	Map map(3000, 20, 69);
+	Map map(3000, 20, 200);
 	Player Player1((Vector2){20.f, -1000.f},1);
 
 	while(!WindowShouldClose()) {
