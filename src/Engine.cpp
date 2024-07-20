@@ -13,17 +13,20 @@ Engine::~Engine() {
 	CloseWindow();
 }
 
-//game logic
-void Engine::Update() {
+
+void Engine::UpdateEvent() {
 
 }
 
-//game Render
-void Engine::Render() {
+void Engine::UpdatePhysics(Map *map) {
+
+}
+
+void Engine::UpdateRender(Map *map) {
 	BeginDrawing();
 	BeginMode2D(Engine::Camera);
 
-	DrawRectangle(200, 200, 200, 200, WHITE);
+	map->Draw();
 
 	EndMode2D();
 	EndDrawing();

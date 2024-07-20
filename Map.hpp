@@ -2,22 +2,24 @@
 #include <raylib.h>
 #include <cstdint>
 
+//texturesID
+//0 - random color
 
 class Map {
 private:
 	typedef struct Block {
-		Texture2D Texture;
+		uint8_t TextureID;
 		Rectangle Collision;
-		Vector2 Position;
 	} Block;
 
 	Block *_Block;
+	uint16_t _BlockSize;
 
 public:
-	Map(uint16_t SizeOfMap, int32_t seed);
+	Map(uint16_t SizeOfMap, uint16_t CoutOfOBJ, uint32_t seed);
 	~Map();
 
 	void Draw();
-	Rectangle GetBlockColission();
-
+	Rectangle GetBlockColission(uint16_t i);//jak i > _BlockSize to segf więc uważaj jak coś tu robisz
+	uint16_t GetBlockArrSize();
 };
