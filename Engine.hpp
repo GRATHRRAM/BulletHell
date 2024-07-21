@@ -12,6 +12,7 @@ public:
 	void UpdatePhysics(float delta,Player *Player1, Player *Player2);
 	void UpdateCollision(Player *Player1, Player *Player2, Map *map); 
 	void UpdateRender(Map *map,Player *Player1, Player *Player2);
+	void UpdateCamera(Player *Player1,Player *Player2, float zoom);
 private:
 	Camera2D Camera;
 };

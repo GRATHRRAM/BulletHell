@@ -1,5 +1,6 @@
 #include "../Engine.hpp"
 #include <raylib.h>
+#include <raymath.h>
 
 Engine::Engine(int WindowWidth, int WindowHeight) {
 	InitWindow(WindowWidth,WindowHeight, "BulletHell");
@@ -40,4 +41,15 @@ void Engine::UpdateRender(Map *map,Player *Player1, Player *Player2) {
 
 	EndMode2D();
 	EndDrawing();
+}
+
+void Engine::UpdateCamera(Player *Player1, Player *Player2, float zoom) {
+	float _zoom = abs(Vector2Distance(
+		(Vector2){Player1->Collision.x,Player1->Collision.y},
+		(Vector2){Player2->Collision.x,Player2->Collision.y}))
+		* (zoom * 0.005);
+	Engine::Camera.zoom = Clamp(zoom / _zoom,0.1,0.3);
+
+	Engine::Camera.target.x = (Player1->Collision.x + Player2->Collision.x) / 2;
+	Engine::Camera.target.y = (Player1->Collision.y + Player2->Collision.y) / 2;
 }

@@ -1,6 +1,5 @@
 #include <raylib.h>
 #include "../Player.hpp"
-#include <iostream>
 
 Player::Player(Vector2 SpawnPosition, uint8_t WitchPlayer) {
     Player::Collision.x = SpawnPosition.x;
