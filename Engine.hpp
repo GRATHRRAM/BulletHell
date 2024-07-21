@@ -8,10 +8,10 @@ public:
 	Engine(int WindowWidth, int WindowHeight);
 	~Engine();
 
-	void UpdateEvent(float delta, Player *Player1);
-	void UpdatePhysics(float delta,Player *Player1);
-	void UpdateCollision(Player *Player1, Map *map); 
-	void UpdateRender(Map *map,Player *Player1);
+	void UpdateEvent(float delta, Player *Player1, Player *Player2);
+	void UpdatePhysics(float delta,Player *Player1, Player *Player2);
+	void UpdateCollision(Player *Player1, Player *Player2, Map *map); 
+	void UpdateRender(Map *map,Player *Player1, Player *Player2);
 private:
 	Camera2D Camera;
 };

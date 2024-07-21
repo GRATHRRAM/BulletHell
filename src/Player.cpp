@@ -9,20 +9,23 @@ Player::Player(Vector2 SpawnPosition, uint8_t WitchPlayer) {
 }
 
 void Player::Draw() {
-    DrawRectangleRec(Player::Collision, GRAY);
+    if(Player::WitchPlayer == 1) DrawRectangleRec(Player::Collision, GREEN);
+    else DrawRectangleRec(Player::Collision, RED);
 }
 
 void Player::UpdateEvent(float Delta) {
     if(WitchPlayer == 1) {
-        if(IsKeyDown(KEY_W)) Player::Velocity.y = -10;
+        if(IsKeyPressed(KEY_W) && Player::OnGround) Player::Velocity.y = -20;
         if(IsKeyDown(KEY_A)) Player::Velocity.x -= Player::speed * Delta;
         if(IsKeyDown(KEY_D)) Player::Velocity.x += Player::speed * Delta;
     }
     else {//witchPlayer == 2
-        if(IsKeyDown(KEY_UP))    Player::Velocity.y = -10;
+        if(IsKeyPressed(KEY_UP) && Player::OnGround)    Player::Velocity.y = -20;
         if(IsKeyDown(KEY_LEFT))  Player::Velocity.x -= Player::speed * Delta;
         if(IsKeyDown(KEY_RIGHT)) Player::Velocity.x += Player::speed * Delta;
     }
+    Player::Collision.x += Player::Velocity.x;
+    Player::Collision.y += Player::Velocity.y;
 }
 
 void Player::UpdatePhysics(float Delta) {
@@ -32,18 +35,16 @@ void Player::UpdatePhysics(float Delta) {
         Player::Velocity.y = 0;
     }
 
-    Player::Velocity.x *= 0.99;//fricton
-    //if(Player::Velocity.x < 0.0001 || Player::Velocity.x > -0.0001) Player::Velocity.x = 0;
+    Player::Velocity.x *= Player::Friction;//fricton
 
     if(Player::Velocity.x > 100) Player::Velocity.x = 100;
     if(Player::Velocity.x < -100) Player::Velocity.x = -100;
-    Player::Collision.x += Player::Velocity.x;
-    Player::Collision.y += Player::Velocity.y;
 }
 
 void Player::CheckCollision(Map *map) {
     for(uint16_t i = 0; i < map->GetBlockArrSize(); ++i) {
         if ( map->GetBlockColission(i).y <= Player::Collision.y + Player::Collision.height &&
+             Player::Collision.y <= map->GetBlockColission(i).y + map->GetBlockColission(i).height &&
             Player::Collision.x + Player::Collision.width >=  map->GetBlockColission(i).x &&
             Player::Collision.x <= map->GetBlockColission(i).x + map->GetBlockColission(i).width) {
             Player::OnGround = true;

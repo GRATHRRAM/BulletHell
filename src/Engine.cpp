@@ -14,25 +14,29 @@ Engine::~Engine() {
 	CloseWindow();
 }
 
-void Engine::UpdateEvent(float delta, Player *Player1) {
+void Engine::UpdateEvent(float delta, Player *Player1, Player *Player2) {
 	Player1->UpdateEvent(delta);
+	Player2->UpdateEvent(delta);
 }
 
-void Engine::UpdatePhysics(float delta, Player *Player1) {
+void Engine::UpdatePhysics(float delta, Player *Player1, Player *Player2) {
 	Player1->UpdatePhysics(delta);
+	Player2->UpdatePhysics(delta);
 }
 
-void Engine::UpdateCollision(Player *Player1, Map *map) {
+void Engine::UpdateCollision(Player *Player1, Player *Player2, Map *map) {
 	Player1->CheckCollision(map);
+	Player2->CheckCollision(map);
 }
 
-void Engine::UpdateRender(Map *map,Player *Player1) {
+void Engine::UpdateRender(Map *map,Player *Player1, Player *Player2) {
 	BeginDrawing();
 	ClearBackground(BLACK);
 	BeginMode2D(Engine::Camera);
 
 	map->Draw();
 	Player1->Draw();
+	Player2->Draw();
 
 	EndMode2D();
 	EndDrawing();
