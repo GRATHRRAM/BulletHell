@@ -6,7 +6,7 @@
 
 class Player {
 public: //add texture later
-	Player(Vector2 SpawnPosition, uint8_t WitchPlayer);
+	Player(Map *map, uint8_t WitchPlayer);
 
 	uint8_t WitchPlayer;
 	float speed = 25;
@@ -15,11 +15,13 @@ public: //add texture later
 	float Gravity = 20;
 	float Friction = 0.98;
 	uint32_t Points = 0;
+	bool isded = false;
 
 	void Draw();
 	void UpdateEvent(float Delta);
 	void UpdatePhysics(float Delta);
-	void CheckCollision(Map *map);
+	void CheckCollision(Map *map,Player *OtherPlayer);
+	void Die(Map *map,Player *Player2);
 	private:
 	bool OnGround = false;
 };

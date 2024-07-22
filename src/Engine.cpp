@@ -26,14 +26,13 @@ void Engine::UpdatePhysics(float delta, Player *Player1, Player *Player2) {
 }
 
 void Engine::UpdateCollision(Player *Player1, Player *Player2, Map *map) {
-	Player1->CheckCollision(map);
-	Player2->CheckCollision(map);
+	Player1->CheckCollision(map,Player2);
+	Player2->CheckCollision(map,Player1);
 }
 
 void Engine::UpdateRender(Map *map,Player *Player1, Player *Player2) {
 	BeginDrawing();
 	ClearBackground(BLACK);
-	Engine::UpdateGui(Player1,Player2);
 	BeginMode2D(Engine::Camera);
 
 	map->Draw();
@@ -41,6 +40,7 @@ void Engine::UpdateRender(Map *map,Player *Player1, Player *Player2) {
 	Player2->Draw();
 
 	EndMode2D();
+	Engine::UpdateGui(Player1,Player2);
 	EndDrawing();
 }
 
@@ -49,7 +49,7 @@ void Engine::UpdateCamera(Player *Player1, Player *Player2, float zoom) {
 		(Vector2){Player1->Collision.x,Player1->Collision.y},
 		(Vector2){Player2->Collision.x,Player2->Collision.y}))
 		* (zoom * 0.005);
-	Engine::Camera.zoom = Clamp(zoom / _zoom,0.1,0.3);
+	Engine::Camera.zoom = Clamp(zoom / _zoom,0.09,0.3);
 
 	Engine::Camera.target.x = (Player1->Collision.x + Player2->Collision.x) / 2;
 	Engine::Camera.target.y = (Player1->Collision.y + Player2->Collision.y) / 2;

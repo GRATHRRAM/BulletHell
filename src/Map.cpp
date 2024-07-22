@@ -17,6 +17,7 @@ Map::Map(uint16_t SizeOfMap, uint16_t CoutOfOBJ, uint32_t seed) {
     }
 
     Map::_BlockSize = CoutOfOBJ;
+    Map::SizeOfMap = SizeOfMap;
 }
 
 Map::~Map() {

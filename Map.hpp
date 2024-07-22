@@ -22,4 +22,5 @@ public:
 	void Draw();
 	Rectangle GetBlockColission(uint16_t i);//jak i > _BlockSize to segf więc uważaj jak coś tu robisz
 	uint16_t GetBlockArrSize();
+	uint16_t SizeOfMap;
 };
