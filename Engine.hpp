@@ -5,15 +5,18 @@
 
 class Engine {
 public:
-	Engine(int WindowWidth, int WindowHeight);
+	Engine(int WindowWidth, int WindowHeight,Player *Player1,Player *Player2,Map *map);
 	~Engine();
 
-	void UpdateEvent(float delta, Player *Player1, Player *Player2);
-	void UpdatePhysics(float delta,Player *Player1, Player *Player2);
-	void UpdateCollision(Player *Player1, Player *Player2, Map *map); 
-	void UpdateRender(Map *map,Player *Player1, Player *Player2);
-	void UpdateCamera(Player *Player1,Player *Player2, float zoom);
-	void UpdateGui(Player *Player1,Player *Player2);
+	void UpdateEvent(float delta);
+	void UpdatePhysics(float delta);
+	void UpdateCollision(); 
+	void UpdateRender();
+	void UpdateCamera(float zoom);
+	void UpdateGui();
 private:
+	Player *Player1;
+	Player *Player2;
+	Map *map;
 	Camera2D Camera;
 };

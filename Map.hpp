@@ -12,7 +12,7 @@ private:
 		Rectangle Collision;
 	} Block;
 
-	Block *_Block;
+	Block *_Block = nullptr;
 	uint16_t _BlockSize;
 
 public:
@@ -23,4 +23,5 @@ public:
 	Rectangle GetBlockColission(uint16_t i);//jak i > _BlockSize to segf więc uważaj jak coś tu robisz
 	uint16_t GetBlockArrSize();
 	uint16_t SizeOfMap;
+	bool New(uint16_t SizeOfMap, uint16_t CoutOfOBJ, uint32_t seed);//false == no error ; true == error
 };
