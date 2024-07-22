@@ -2,6 +2,7 @@
 #include <raylib.h>
 #include <stdint.h>
 #include "Map.hpp"
+#include <vector>
 
 
 class Player {
@@ -16,12 +17,22 @@ public: //add texture later
 	float Friction = 0.98;
 	uint32_t Points = 0;
 	bool isded = false;
+	bool lastDir = false;//false == left
+
+	typedef struct bullet {
+		Vector2 Velocity;
+		Vector2 Position;
+		Vector2 Size;
+	} bullet;
+	std::vector<bullet> bullets;
 
 	void Draw();
 	void UpdateEvent(float Delta);
 	void UpdatePhysics(float Delta);
 	void CheckCollision(Map *map,Player *OtherPlayer);
 	void Die(Map *map,Player *Player2);
+	void Shoot(Vector2 Velocity, Vector2 Size);
+
 	private:
 	bool OnGround = false;
 };

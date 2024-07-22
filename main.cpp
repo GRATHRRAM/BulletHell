@@ -7,7 +7,7 @@
 int main() {
 	srand(time(nullptr));
 	SetRandomSeed(rand() % 2147483647);
-	Map map(5000,50, GetRandomValue(0,2147483647));
+	Map map(10000,150, GetRandomValue(0,2147483647));
 	Player Player1(&map,1);
 	Player Player2(&map,2);
 

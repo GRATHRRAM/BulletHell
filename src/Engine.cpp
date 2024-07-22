@@ -53,7 +53,7 @@ void Engine::UpdateCamera(float zoom) {
 		(Vector2){Player1->Collision.x,Player1->Collision.y},
 		(Vector2){Player2->Collision.x,Player2->Collision.y}))
 		* (zoom * 0.005);
-	Engine::Camera.zoom = Clamp(zoom / _zoom,0.09,0.3);
+	Engine::Camera.zoom = Clamp(zoom / _zoom,0.04,0.3);
 
 	Engine::Camera.target.x = (Engine::Player1->Collision.x + Engine::Player2->Collision.x) / 2;
 	Engine::Camera.target.y = (Engine::Player1->Collision.y + Engine::Player2->Collision.y) / 2;
