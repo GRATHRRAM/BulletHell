@@ -13,6 +13,7 @@ public:
 	void UpdateCollision(Player *Player1, Player *Player2, Map *map); 
 	void UpdateRender(Map *map,Player *Player1, Player *Player2);
 	void UpdateCamera(Player *Player1,Player *Player2, float zoom);
+	void UpdateGui(Player *Player1,Player *Player2);
 private:
 	Camera2D Camera;
 };

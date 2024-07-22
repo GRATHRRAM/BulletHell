@@ -14,6 +14,7 @@ public: //add texture later
 	Rectangle Collision = {0,0,100,200};
 	float Gravity = 20;
 	float Friction = 0.98;
+	uint32_t Points = 0;
 
 	void Draw();
 	void UpdateEvent(float Delta);

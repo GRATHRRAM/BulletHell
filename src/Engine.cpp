@@ -33,6 +33,7 @@ void Engine::UpdateCollision(Player *Player1, Player *Player2, Map *map) {
 void Engine::UpdateRender(Map *map,Player *Player1, Player *Player2) {
 	BeginDrawing();
 	ClearBackground(BLACK);
+	Engine::UpdateGui(Player1,Player2);
 	BeginMode2D(Engine::Camera);
 
 	map->Draw();
@@ -52,4 +53,9 @@ void Engine::UpdateCamera(Player *Player1, Player *Player2, float zoom) {
 
 	Engine::Camera.target.x = (Player1->Collision.x + Player2->Collision.x) / 2;
 	Engine::Camera.target.y = (Player1->Collision.y + Player2->Collision.y) / 2;
+}
+
+void Engine::UpdateGui(Player *Player1,Player *Player2) {
+	DrawText(TextFormat("Player1 Points: %i\n\nPlayer2 Points: %i",
+	Player1->Points,Player2->Points),10,10,25,WHITE);
 }

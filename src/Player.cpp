@@ -15,11 +15,13 @@ void Player::Draw() {
 void Player::UpdateEvent(float Delta) {
     if(WitchPlayer == 1) {
         if(IsKeyPressed(KEY_W) && Player::OnGround) Player::Velocity.y = -20;
+        if(IsKeyPressed(KEY_S) && Player::OnGround) Player::Velocity.y = 20;
         if(IsKeyDown(KEY_A)) Player::Velocity.x -= Player::speed * Delta;
         if(IsKeyDown(KEY_D)) Player::Velocity.x += Player::speed * Delta;
     }
     else {//witchPlayer == 2
         if(IsKeyPressed(KEY_UP) && Player::OnGround)    Player::Velocity.y = -20;
+        if(IsKeyPressed(KEY_DOWN) && Player::OnGround) Player::Velocity.y = 20;
         if(IsKeyDown(KEY_LEFT))  Player::Velocity.x -= Player::speed * Delta;
         if(IsKeyDown(KEY_RIGHT)) Player::Velocity.x += Player::speed * Delta;
     }
