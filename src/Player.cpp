@@ -24,16 +24,16 @@ void Player::UpdateEvent(float Delta) {
         if(IsKeyPressed(KEY_S) && Player::OnGround) Player::Velocity.y = 20;
         if(IsKeyDown(KEY_A)) {Player::Velocity.x -= Player::speed * Delta;Player::lastDir = false;}
         if(IsKeyDown(KEY_D)) {Player::Velocity.x += Player::speed * Delta;Player::lastDir = true;}
-        if(IsKeyPressed(KEY_E) && Player::lastDir) Shoot((Vector2){50,0},(Vector2){40,40});
-        if(IsKeyPressed(KEY_E) && !Player::lastDir) Shoot((Vector2){-50,0},(Vector2){40,40});
+        if(IsKeyPressed(KEY_E) && Player::lastDir) Shoot((Vector2){70,0},(Vector2){40,40});
+        if(IsKeyPressed(KEY_E) && !Player::lastDir) Shoot((Vector2){-70,0},(Vector2){40,40});
     }
     else {//witchPlayer == 2
         if(IsKeyPressed(KEY_UP) && Player::OnGround)    Player::Velocity.y = -20;
         if(IsKeyPressed(KEY_DOWN) && Player::OnGround) Player::Velocity.y = 20;
         if(IsKeyDown(KEY_LEFT))  {Player::Velocity.x -= Player::speed * Delta; Player::lastDir = false;}
         if(IsKeyDown(KEY_RIGHT)) {Player::Velocity.x += Player::speed * Delta; Player::lastDir = true;}
-        if(IsKeyPressed(KEY_SPACE) && Player::lastDir) Shoot((Vector2){50,0},(Vector2){40,40});
-        if(IsKeyPressed(KEY_SPACE) && !Player::lastDir) Shoot((Vector2){-50,0},(Vector2){40,40});
+        if(IsKeyPressed(KEY_SPACE) && Player::lastDir) Shoot((Vector2){70,0},(Vector2){40,40});
+        if(IsKeyPressed(KEY_SPACE) && !Player::lastDir) Shoot((Vector2){-70,0},(Vector2){40,40});
     }
     Player::Collision.x += Player::Velocity.x;
     Player::Collision.y += Player::Velocity.y;
