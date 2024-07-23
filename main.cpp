@@ -2,12 +2,11 @@
 #include "Engine.hpp"
 #include <time.h>
 #include <cstdlib>
-#include "Resorces.hpp"
 
 int main() {
 	srand(time(nullptr));
 	SetRandomSeed(rand() % 2147483647);
-	Map map(10000,150, GetRandomValue(0,2147483647));
+	Map map(7000,50, GetRandomValue(0,2147483647));
 	Player Player1(&map,1);
 	Player Player2(&map,2);
 
@@ -21,7 +20,7 @@ int main() {
 		game.UpdateCamera(1);
 		game.UpdateRender();
 		if(Player1.isded || Player2.isded) {
-			map.New(5000,50,GetRandomValue(0,2147483647));
+			map.New(7000,50,GetRandomValue(0,2147483647));
 			Player1.isded = false;
 			Player2.isded = false;
 		}
